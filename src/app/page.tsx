@@ -1,69 +1,57 @@
-import Image from "next/image";
+import { Hero } from "@/components/home/hero";
+import { TrustStrip } from "@/components/home/trust-strip";
+import { BuildCategories } from "@/components/home/build-categories";
+import { FeaturedProjects } from "@/components/home/featured-projects";
+import { BungalowDifference } from "@/components/home/bungalow-difference";
+import { FeaturedCaseStudy } from "@/components/home/featured-case-study";
+import { ProcessPreview } from "@/components/home/process-preview";
+import { PressStrip } from "@/components/home/press-strip";
+import { ClientStories } from "@/components/home/client-stories";
+import { FAQPreview } from "@/components/home/faq-preview";
+import { FinalCTA } from "@/components/home/final-cta";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Hero />
+      <TrustStrip />
+
+      {/* Large Architectural Manifesto / Introduction */}
+      <section className="section bg-[#FAF8F2]">
+        <div className="container grid gap-10 lg:grid-cols-12 items-start">
+          <div className="lg:col-span-4">
+            <p className="eyebrow">Built Differently</p>
+            <span className="text-xs font-mono uppercase tracking-widest text-[#6D716A]">
+              Maine Craft • Modern Performance
+            </span>
+          </div>
+
+          <div className="lg:col-span-8">
+            <h2 className="font-[var(--font-display)] text-[clamp(2.5rem,4.8vw,5.2rem)] leading-[1.02] tracking-[-0.035em] text-[#14241B]">
+              We don&apos;t mass-produce houses. We craft enduring structures tailored to the site and the people who live in them.
+            </h2>
+
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 text-[#6D716A] text-base leading-relaxed">
+              <p>
+                First, we listen. Then we design and prefabricate authentic timber-frame structures in our Woolwich workshop. Combining traditional mortise-and-tenon joinery with high-performance Structural Insulated Panels (SIPs), we eliminate the drafts and energy waste of standard stick-built construction.
+              </p>
+              <p>
+                Whether it is a 2,000 sq. ft. coastal barn house, a 280 sq. ft. mountain studio, or an open timber-frame event space, each Bungalow in a Box arrives on site pre-cut, pre-stained, and ready to be raised swiftly with our dedicated crane fleet.
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+
+      <BuildCategories />
+      <FeaturedProjects />
+      <BungalowDifference />
+      <FeaturedCaseStudy />
+      <ProcessPreview />
+      <PressStrip />
+      <ClientStories />
+      <FAQPreview />
+      <FinalCTA />
+    </>
   );
 }
