@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/lib/seo";
+import { Button } from "@/components/ui/button";
 
 export function SiteFooter() {
   return (
@@ -19,13 +19,14 @@ export function SiteFooter() {
           </div>
 
           <div className="lg:col-span-6 flex flex-col sm:flex-row sm:items-center sm:justify-end gap-5 pt-4">
-            <Link
+            <Button
               href="/start-a-project"
-              className="inline-flex items-center justify-between gap-4 px-8 py-5 bg-[#FAF8F2] text-[#14241B] font-bold text-xs uppercase tracking-[0.18em] hover:bg-white transition-all shadow-sm"
+              variant="inverse"
+              size="lg"
+              arrow
             >
-              <span>Start Your Project</span>
-              <ArrowUpRight size={18} />
-            </Link>
+              Start Your Project
+            </Button>
           </div>
         </div>
 

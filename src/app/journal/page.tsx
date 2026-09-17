@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
 import { articles } from "@/content/journal";
+import { TextLink } from "@/components/ui/text-link";
 
 export const metadata: Metadata = {
   title: "Journal & The Unboxing Blog | Bungalow in a Box",
@@ -70,13 +70,9 @@ export default function JournalPage() {
 
                 <div className="p-8 pt-0 border-t border-transparent flex items-center justify-between text-xs">
                   <span className="font-semibold text-[#14241B]">By {art.author}</span>
-                  <Link
-                    href={`/journal/${art.slug}`}
-                    className="font-bold uppercase tracking-wider text-[#98704C] inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform"
-                  >
-                    <span>Read Article</span>
-                    <ArrowRight size={13} />
-                  </Link>
+                  <TextLink href={`/journal/${art.slug}`}>
+                    Read Article
+                  </TextLink>
                 </div>
               </article>
             ))}

@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { pressMentions } from "@/content/press";
+import { TextLink } from "@/components/ui/text-link";
 
 export function PressStrip() {
   return (
@@ -14,12 +14,9 @@ export function PressStrip() {
             </h3>
           </div>
 
-          <Link
-            href="/about#press"
-            className="text-xs font-bold uppercase tracking-[0.16em] text-[#98704C] hover:underline"
-          >
-            Read All Press Coverage →
-          </Link>
+          <TextLink href="/about#press">
+            Read All Press Coverage
+          </TextLink>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-8">

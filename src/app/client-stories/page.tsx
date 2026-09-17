@@ -1,9 +1,9 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import { Quote, ArrowRight, ShieldCheck } from "lucide-react";
+import { Quote, ShieldCheck } from "lucide-react";
 import { testimonials } from "@/content/testimonials";
 import { projects } from "@/content/projects";
 import { Button } from "@/components/ui/button";
+import { TextLink } from "@/components/ui/text-link";
 
 export const metadata: Metadata = {
   title: "Client Stories & Verified Reviews | Bungalow in a Box",
@@ -78,13 +78,9 @@ export default function ClientStoriesPage() {
                   </div>
 
                   {matchedProject && (
-                    <Link
-                      href={`/projects/${matchedProject.slug}`}
-                      className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#98704C] hover:underline"
-                    >
-                      <span>View Case Study ({matchedProject.name})</span>
-                      <ArrowRight size={14} />
-                    </Link>
+                    <TextLink href={`/projects/${matchedProject.slug}`}>
+                      View Case Study ({matchedProject.name})
+                    </TextLink>
                   )}
                 </div>
               </article>

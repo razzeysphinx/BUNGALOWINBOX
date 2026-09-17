@@ -7,37 +7,45 @@ import type {
 
 import { ArrowUpRight } from "lucide-react";
 
-export type Variant =
+export type ButtonVariant =
   | "primary"
   | "secondary"
-  | "light"
-  | "ghost"
-  | "text"
-  | "dark"
-  | "outline"
-  | "timber";
+  | "inverse"
+  | "inverseOutline"
+  | "accent"
+  | "text";
 
-export type Size = "sm" | "md" | "lg";
+export type ButtonSize =
+  | "sm"
+  | "md"
+  | "lg";
 
 type CommonProps = {
   children: ReactNode;
-  variant?: Variant;
-  size?: Size;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
   arrow?: boolean;
   className?: string;
 };
 
-type LinkButtonProps = CommonProps &
-  AnchorHTMLAttributes<HTMLAnchorElement> & {
+type LinkButtonProps =
+  CommonProps &
+  Omit<
+    AnchorHTMLAttributes<HTMLAnchorElement>,
+    "href"
+  > & {
     href: string;
   };
 
-type ActionButtonProps = CommonProps &
+type ActionButtonProps =
+  CommonProps &
   ButtonHTMLAttributes<HTMLButtonElement> & {
     href?: never;
   };
 
-export type ButtonProps = LinkButtonProps | ActionButtonProps;
+export type ButtonProps =
+  | LinkButtonProps
+  | ActionButtonProps;
 
 const base = [
   "group",
@@ -49,104 +57,116 @@ const base = [
   "tracking-[-0.01em]",
   "whitespace-nowrap",
   "select-none",
-  "transition-all",
-  "duration-300",
+  "transition-colors",
+  "duration-250",
   "ease-out",
+
   "focus-visible:outline-none",
   "focus-visible:ring-2",
-  "focus-visible:ring-[#98704C]",
+  "focus-visible:ring-[#835A39]",
   "focus-visible:ring-offset-2",
+  "focus-visible:ring-offset-[#FAF8F2]",
+
   "disabled:pointer-events-none",
+  "disabled:cursor-not-allowed",
   "disabled:opacity-45",
 ].join(" ");
 
-const variants: Record<string, string> = {
+const variants:
+  Record<ButtonVariant, string> = {
+
   primary: [
     "bg-[#14241B]",
     "text-[#FAF8F2]",
     "border",
     "border-[#14241B]",
+
     "hover:bg-[#24352B]",
     "hover:border-[#24352B]",
-    "active:translate-y-px",
+
+    "active:bg-[#0F1A14]",
   ].join(" "),
 
   secondary: [
     "bg-transparent",
     "text-[#14241B]",
     "border",
-    "border-[#14241B]/25",
-    "hover:border-[#14241B]",
+    "border-[#14241B]/30",
+
     "hover:bg-[#14241B]",
     "hover:text-[#FAF8F2]",
+    "hover:border-[#14241B]",
+
+    "active:bg-[#0F1A14]",
+    "active:text-[#FAF8F2]",
   ].join(" "),
 
-  light: [
+  inverse: [
     "bg-[#FAF8F2]",
     "text-[#14241B]",
     "border",
     "border-[#FAF8F2]",
+
     "hover:bg-white",
     "hover:border-white",
-    "active:translate-y-px",
+
+    "active:bg-[#F4F1E9]",
   ].join(" "),
 
-  ghost: [
+  inverseOutline: [
     "bg-transparent",
-    "text-current",
+    "text-[#FAF8F2]",
     "border",
-    "border-current/30",
-    "hover:border-current",
-    "hover:bg-white/10",
+    "border-white/45",
+
+    "hover:bg-[#FAF8F2]",
+    "hover:text-[#14241B]",
+    "hover:border-[#FAF8F2]",
+
+    "active:bg-white",
+    "active:text-[#14241B]",
+  ].join(" "),
+
+  accent: [
+    "bg-[#835A39]",
+    "text-[#FAF8F2]",
+    "border",
+    "border-[#835A39]",
+
+    "hover:bg-[#704A2F]",
+    "hover:border-[#704A2F]",
+
+    "active:bg-[#603E28]",
   ].join(" "),
 
   text: [
     "bg-transparent",
-    "text-current",
+    "text-[#14241B]",
     "border-0",
     "px-0",
+
     "justify-start",
-    "hover:opacity-70",
-  ].join(" "),
 
-  // Backwards compatibility aliases
-  dark: [
-    "bg-[#14241B]",
-    "text-[#FAF8F2]",
-    "border",
-    "border-[#14241B]",
-    "hover:bg-[#24352B]",
-    "hover:border-[#24352B]",
-    "active:translate-y-px",
-  ].join(" "),
-
-  outline: [
-    "bg-transparent",
-    "text-current",
-    "border",
-    "border-current/30",
-    "hover:border-current",
-    "hover:bg-white/10",
-  ].join(" "),
-
-  timber: [
-    "bg-[#98704C]",
-    "text-[#FAF8F2]",
-    "border",
-    "border-[#98704C]",
-    "hover:bg-[#B18A63]",
-    "hover:border-[#B18A63]",
-    "active:translate-y-px",
+    "hover:text-[#835A39]",
   ].join(" "),
 };
 
-const sizes: Record<Size, string> = {
-  sm: "min-h-11 px-4 text-[0.82rem]",
-  md: "min-h-12 px-6 text-sm",
-  lg: "min-h-14 px-7 text-[0.95rem]",
+const sizes:
+  Record<ButtonSize, string> = {
+
+  sm:
+    "min-h-11 px-4 text-[0.82rem]",
+
+  md:
+    "min-h-12 px-6 text-sm",
+
+  lg:
+    "min-h-14 px-7 text-[0.95rem]",
 };
 
-export function Button(props: ButtonProps) {
+export function Button(
+  props: ButtonProps,
+) {
   const {
     children,
     variant = "primary",
@@ -155,13 +175,15 @@ export function Button(props: ButtonProps) {
     className = "",
   } = props;
 
-  const normalizedVariant = variants[variant] ? variant : "primary";
-
   const classes = [
     base,
-    variants[normalizedVariant],
+    variants[variant],
     sizes[size],
-    normalizedVariant === "text" ? "" : "rounded-[4px]",
+
+    variant === "text"
+      ? ""
+      : "rounded-[4px]",
+
     className,
   ]
     .filter(Boolean)
@@ -169,20 +191,31 @@ export function Button(props: ButtonProps) {
 
   const content = (
     <>
-      <span>{children}</span>
+      <span>
+        {children}
+      </span>
 
       {arrow && (
         <ArrowUpRight
           aria-hidden="true"
           size={17}
           strokeWidth={1.8}
-          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          className={[
+            "shrink-0",
+            "transition-transform",
+            "duration-250",
+            "group-hover:translate-x-0.5",
+            "group-hover:-translate-y-0.5",
+          ].join(" ")}
         />
       )}
     </>
   );
 
-  if ("href" in props && typeof props.href === "string") {
+  if (
+    "href" in props &&
+    typeof props.href === "string"
+  ) {
     const {
       href,
       children: _children,
@@ -192,6 +225,7 @@ export function Button(props: ButtonProps) {
       className: _className,
       ...linkProps
     } = props as LinkButtonProps;
+
     void _children;
     void _variant;
     void _size;
@@ -199,7 +233,8 @@ export function Button(props: ButtonProps) {
     void _className;
 
     const external =
-      href.startsWith("http://") || href.startsWith("https://");
+      href.startsWith("http://") ||
+      href.startsWith("https://");
 
     if (external) {
       return (
@@ -216,7 +251,11 @@ export function Button(props: ButtonProps) {
     }
 
     return (
-      <Link href={href} className={classes} {...linkProps}>
+      <Link
+        href={href}
+        className={classes}
+        {...linkProps}
+      >
         {content}
       </Link>
     );
@@ -230,7 +269,9 @@ export function Button(props: ButtonProps) {
     className: _className,
     type = "button",
     ...buttonProps
-  } = props as ActionButtonProps;
+  } =
+    props as ActionButtonProps;
+
   void _children;
   void _variant;
   void _size;
@@ -238,7 +279,11 @@ export function Button(props: ButtonProps) {
   void _className;
 
   return (
-    <button type={type} className={classes} {...buttonProps}>
+    <button
+      type={type}
+      className={classes}
+      {...buttonProps}
+    >
       {content}
     </button>
   );

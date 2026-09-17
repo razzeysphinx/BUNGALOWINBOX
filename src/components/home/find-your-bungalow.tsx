@@ -3,10 +3,12 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { projects } from "@/content/projects";
 import { formatDimensions, formatSquareFeet } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { FilterChip } from "@/components/ui/filter-chip";
+import { TextLink } from "@/components/ui/text-link";
 
 const structureTypes = [
   { label: "Home", value: "homes" },
@@ -119,24 +121,15 @@ export function FindYourBungalow() {
               </div>
 
               <div className="flex flex-wrap gap-2 pt-1">
-                {structureTypes.map((type) => {
-                  const active = selectedType === type.value;
-                  return (
-                    <button
-                      key={type.label}
-                      type="button"
-                      onClick={() => setSelectedType(type.value)}
-                      className={[
-                        "px-4 py-2 text-xs font-semibold tracking-wide border transition-all rounded-[4px]",
-                        active
-                          ? "bg-[#14241B] text-[#FAF8F2] border-[#14241B]"
-                          : "bg-white text-[#262724] border-[#D9D5CB] hover:border-[#14241B]",
-                      ].join(" ")}
-                    >
-                      {type.label}
-                    </button>
-                  );
-                })}
+                {structureTypes.map((type) => (
+                  <FilterChip
+                    key={type.label}
+                    selected={selectedType === type.value}
+                    onClick={() => setSelectedType(type.value)}
+                  >
+                    {type.label}
+                  </FilterChip>
+                ))}
               </div>
             </div>
 
@@ -150,24 +143,16 @@ export function FindYourBungalow() {
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
-                {sizeRanges.map((size, index) => {
-                  const active = selectedSize === index;
-                  return (
-                    <button
-                      key={size.label}
-                      type="button"
-                      onClick={() => setSelectedSize(index)}
-                      className={[
-                        "px-4 py-3 text-xs font-semibold text-center border transition-all rounded-[4px]",
-                        active
-                          ? "bg-[#14241B] text-[#FAF8F2] border-[#14241B] shadow-sm"
-                          : "bg-white text-[#262724] border-[#D9D5CB] hover:border-[#14241B]",
-                      ].join(" ")}
-                    >
-                      {size.label}
-                    </button>
-                  );
-                })}
+                {sizeRanges.map((size, index) => (
+                  <FilterChip
+                    key={size.label}
+                    selected={selectedSize === index}
+                    onClick={() => setSelectedSize(index)}
+                    className="w-full"
+                  >
+                    {size.label}
+                  </FilterChip>
+                ))}
               </div>
             </div>
 
@@ -181,24 +166,16 @@ export function FindYourBungalow() {
               </div>
 
               <div className="flex flex-wrap gap-2 pt-1">
-                {featurePriorities.map((f) => {
-                  const active = selectedFeature === f.label;
-                  return (
-                    <button
-                      key={f.label}
-                      type="button"
-                      onClick={() => setSelectedFeature(f.label)}
-                      className={[
-                        "px-4 py-2 text-xs font-semibold tracking-wide border transition-all rounded-[4px]",
-                        active
-                          ? "bg-[#98704C] text-[#FAF8F2] border-[#98704C]"
-                          : "bg-white text-[#262724] border-[#D9D5CB] hover:border-[#98704C]",
-                      ].join(" ")}
-                    >
-                      {f.label}
-                    </button>
-                  );
-                })}
+                {featurePriorities.map((f) => (
+                  <FilterChip
+                    key={f.label}
+                    selected={selectedFeature === f.label}
+                    tone="accent"
+                    onClick={() => setSelectedFeature(f.label)}
+                  >
+                    {f.label}
+                  </FilterChip>
+                ))}
               </div>
             </div>
           </div>
@@ -216,13 +193,9 @@ export function FindYourBungalow() {
               </h3>
             </div>
 
-            <Link
-              href="/projects"
-              className="text-xs font-bold uppercase tracking-[0.16em] text-[#14241B] hover:text-[#98704C] transition-colors hidden sm:inline-flex items-center gap-1.5"
-            >
-              <span>Explore all 25 builds</span>
-              <ArrowRight size={14} />
-            </Link>
+            <TextLink href="/projects" className="hidden sm:inline-flex">
+              Explore all 25 builds
+            </TextLink>
           </div>
 
           <div className="mt-8 grid gap-8 md:grid-cols-3">
@@ -269,14 +242,9 @@ export function FindYourBungalow() {
                   </p>
 
                   <div className="mt-auto pt-5">
-                    <Button
-                      href={`/projects/${project.slug}`}
-                      variant="text"
-                      arrow
-                      size="sm"
-                    >
+                    <TextLink href={`/projects/${project.slug}`}>
                       View Case Study
-                    </Button>
+                    </TextLink>
                   </div>
                 </div>
               </article>

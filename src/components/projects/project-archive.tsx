@@ -5,7 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { Search, X, SlidersHorizontal } from "lucide-react";
 import { Project } from "@/types";
 import { ProjectCard } from "@/components/projects/project-card";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { FilterChip } from "@/components/ui/filter-chip";
 
 interface ProjectArchiveProps {
   initialProjects: Project[];
@@ -116,7 +117,7 @@ export function ProjectArchive({ initialProjects }: ProjectArchiveProps) {
             <button
               type="button"
               onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
-              className="md:hidden inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-[#D9D5CB] text-xs font-bold uppercase tracking-wider text-[#14241B]"
+              className="md:hidden inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-[#D9D5CB] text-xs font-bold uppercase tracking-wider text-[#14241B] rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#835A39] focus-visible:ring-offset-2"
             >
               <SlidersHorizontal size={14} />
               <span>Filter Options</span>
@@ -130,24 +131,15 @@ export function ProjectArchive({ initialProjects }: ProjectArchiveProps) {
 
         {/* Desktop Category Pills */}
         <div className="hidden md:flex flex-wrap gap-2 pt-6 border-t border-[#D9D5CB] mt-6">
-          {categories.map((cat) => {
-            const active = selectedCategory === cat.value;
-            return (
-              <button
-                key={cat.value}
-                type="button"
-                onClick={() => setSelectedCategory(cat.value)}
-                className={cn(
-                  "px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-all border",
-                  active
-                    ? "bg-[#14241B] text-[#FAF8F2] border-[#14241B]"
-                    : "bg-white text-[#6D716A] border-[#D9D5CB] hover:border-[#14241B] hover:text-[#14241B]"
-                )}
-              >
-                {cat.label}
-              </button>
-            );
-          })}
+          {categories.map((cat) => (
+            <FilterChip
+              key={cat.value}
+              selected={selectedCategory === cat.value}
+              onClick={() => setSelectedCategory(cat.value)}
+            >
+              {cat.label}
+            </FilterChip>
+          ))}
         </div>
 
         {/* Desktop Width Filter Strip */}
@@ -156,34 +148,28 @@ export function ProjectArchive({ initialProjects }: ProjectArchiveProps) {
             Width Filter:
           </span>
           <div className="flex gap-2">
-            {widthRanges.map((w) => {
-              const active = selectedWidth === w.value;
-              return (
-                <button
-                  key={w.value}
-                  type="button"
-                  onClick={() => setSelectedWidth(w.value)}
-                  className={cn(
-                    "px-3 py-1 text-[0.7rem] font-mono transition-colors border",
-                    active
-                      ? "bg-[#98704C] text-white border-[#98704C]"
-                      : "bg-transparent text-[#262724] border-[#D9D5CB] hover:border-[#14241B]"
-                  )}
-                >
-                  {w.label}
-                </button>
-              );
-            })}
+            {widthRanges.map((w) => (
+              <FilterChip
+                key={w.value}
+                selected={selectedWidth === w.value}
+                tone="accent"
+                onClick={() => setSelectedWidth(w.value)}
+              >
+                {w.label}
+              </FilterChip>
+            ))}
           </div>
 
           {(selectedCategory !== "all" || selectedWidth !== "all" || searchQuery) && (
-            <button
+            <Button
               type="button"
+              variant="text"
+              size="sm"
               onClick={resetFilters}
-              className="ml-auto text-xs text-[#98704C] underline hover:text-[#14241B]"
+              className="ml-auto"
             >
               Reset Filters
-            </button>
+            </Button>
           )}
         </div>
 
@@ -194,19 +180,13 @@ export function ProjectArchive({ initialProjects }: ProjectArchiveProps) {
               <span className="eyebrow text-xs block mb-2">Building Type</span>
               <div className="flex flex-wrap gap-1.5">
                 {categories.map((cat) => (
-                  <button
+                  <FilterChip
                     key={cat.value}
-                    type="button"
+                    selected={selectedCategory === cat.value}
                     onClick={() => setSelectedCategory(cat.value)}
-                    className={cn(
-                      "px-3 py-1.5 text-xs font-semibold uppercase tracking-wider border",
-                      selectedCategory === cat.value
-                        ? "bg-[#14241B] text-white border-[#14241B]"
-                        : "bg-white text-[#262724] border-[#D9D5CB]"
-                    )}
                   >
                     {cat.label}
-                  </button>
+                  </FilterChip>
                 ))}
               </div>
             </div>
@@ -215,38 +195,34 @@ export function ProjectArchive({ initialProjects }: ProjectArchiveProps) {
               <span className="eyebrow text-xs block mb-2">Width Dimension</span>
               <div className="flex flex-wrap gap-1.5">
                 {widthRanges.map((w) => (
-                  <button
+                  <FilterChip
                     key={w.value}
-                    type="button"
+                    selected={selectedWidth === w.value}
+                    tone="accent"
                     onClick={() => setSelectedWidth(w.value)}
-                    className={cn(
-                      "px-3 py-1 text-xs font-mono border",
-                      selectedWidth === w.value
-                        ? "bg-[#98704C] text-white border-[#98704C]"
-                        : "bg-white text-[#262724] border-[#D9D5CB]"
-                    )}
                   >
                     {w.label}
-                  </button>
+                  </FilterChip>
                 ))}
               </div>
             </div>
 
             <div className="pt-2 flex justify-between items-center text-xs">
-              <button
+              <Button
                 type="button"
+                variant="text"
+                size="sm"
                 onClick={resetFilters}
-                className="text-[#98704C] underline"
               >
-                Reset All Filters
-              </button>
-              <button
+                Reset Filters
+              </Button>
+              <Button
                 type="button"
+                size="sm"
                 onClick={() => setMobileFilterOpen(false)}
-                className="px-4 py-2 bg-[#14241B] text-white font-bold uppercase text-[0.7rem]"
               >
                 Apply & Close
-              </button>
+              </Button>
             </div>
           </div>
         )}
@@ -267,13 +243,14 @@ export function ProjectArchive({ initialProjects }: ProjectArchiveProps) {
           <p className="text-sm text-[#6D716A] max-w-md mx-auto">
             Try resetting your category or width filters, or search for another term like &quot;cottage&quot;, &quot;barn&quot;, or &quot;Maine&quot;.
           </p>
-          <button
+          <Button
             type="button"
+            variant="primary"
+            size="md"
             onClick={resetFilters}
-            className="px-6 py-3 bg-[#14241B] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#24352B]"
           >
             Reset Filters
-          </button>
+          </Button>
         </div>
       )}
     </div>

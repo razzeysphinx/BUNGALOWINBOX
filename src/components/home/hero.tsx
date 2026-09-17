@@ -37,7 +37,7 @@ export function Hero() {
           <div className="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <Button
               href="/projects"
-              variant="light"
+              variant="inverse"
               size="lg"
               arrow
               className="w-full sm:w-auto"
@@ -47,9 +47,9 @@ export function Hero() {
 
             <Button
               href="/start-a-project"
-              variant="ghost"
+              variant="inverseOutline"
               size="lg"
-              className="w-full border-white/45 text-white hover:bg-white hover:text-[#14241B] sm:w-auto"
+              className="w-full sm:w-auto"
             >
               Start Your Project
             </Button>

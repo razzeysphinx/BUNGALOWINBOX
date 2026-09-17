@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { ChevronDown, Search, X } from "lucide-react";
 import { FAQItem } from "@/types";
+import { FilterChip } from "@/components/ui/filter-chip";
 import { cn } from "@/lib/utils";
 
 interface FAQDirectoryProps {
@@ -81,24 +82,15 @@ export function FAQDirectory({ items }: FAQDirectoryProps) {
 
         {/* Category Pills */}
         <div className="flex flex-wrap gap-2 pt-2">
-          {categories.map((cat) => {
-            const active = selectedCat === cat;
-            return (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setSelectedCat(cat)}
-                className={cn(
-                  "px-4 py-1.5 text-xs font-semibold uppercase tracking-wider border transition-all",
-                  active
-                    ? "bg-[#14241B] text-[#FAF8F2] border-[#14241B]"
-                    : "bg-white text-[#6D716A] border-[#D9D5CB] hover:border-[#14241B] hover:text-[#14241B]"
-                )}
-              >
-                {cat}
-              </button>
-            );
-          })}
+          {categories.map((cat) => (
+            <FilterChip
+              key={cat}
+              selected={selectedCat === cat}
+              onClick={() => setSelectedCat(cat)}
+            >
+              {cat}
+            </FilterChip>
+          ))}
         </div>
       </div>
 
@@ -113,7 +105,7 @@ export function FAQDirectory({ items }: FAQDirectoryProps) {
                   type="button"
                   onClick={() => toggle(item.id)}
                   aria-expanded={isOpen}
-                  className="w-full flex items-baseline justify-between text-left gap-4 group"
+                  className="w-full flex items-baseline justify-between text-left gap-4 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#835A39] focus-visible:ring-offset-2"
                 >
                   <div className="space-y-1">
                     <span className="text-[0.65rem] font-bold uppercase tracking-wider text-[#98704C] block">

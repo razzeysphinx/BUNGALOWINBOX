@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ArrowUpRight, DollarSign, Hammer, BookOpen, Quote, HelpCircle, Newspaper } from "lucide-react";
 import { pressMentions } from "@/content/press";
 import { Button } from "@/components/ui/button";
+import { TextLink } from "@/components/ui/text-link";
 
 export const metadata: Metadata = {
   title: "Building Resources & Guides | Bungalow in a Box",
@@ -154,15 +155,13 @@ export default function ResourcesPage() {
                 </p>
                 {press.url && (
                   <div className="mt-4 pt-4 border-t border-[#D9D5CB]">
-                    <a
+                    <TextLink
                       href={press.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[#14241B] hover:text-[#98704C] transition-colors"
+                      external
+                      direction="upRight"
                     >
-                      <span>Read Article</span>
-                      <ArrowUpRight size={13} />
-                    </a>
+                      Read Article
+                    </TextLink>
                   </div>
                 )}
               </div>
@@ -180,7 +179,7 @@ export default function ResourcesPage() {
               We talk directly with clients, local contractors, and architects every week. Call our Woolwich shop or submit a consultation request.
             </p>
           </div>
-          <Button href="/start-a-project" variant="light" size="lg" arrow>
+          <Button href="/start-a-project" variant="inverse" size="lg" arrow>
             Start Your Project
           </Button>
         </div>

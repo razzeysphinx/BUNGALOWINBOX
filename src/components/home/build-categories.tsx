@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { buildCategories } from "@/content/build-categories";
+import { TextLink } from "@/components/ui/text-link";
 
 export function BuildCategories() {
   return (
@@ -21,13 +21,9 @@ export function BuildCategories() {
             </p>
 
             <div className="mt-8 hidden lg:block">
-              <Link
-                href="/projects"
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#14241B] hover:text-[#98704C] transition-colors"
-              >
-                <span>View Full Project Archive (25 Builds)</span>
-                <ArrowRight size={14} />
-              </Link>
+              <TextLink href="/projects">
+                View Full Project Archive (25 Builds)
+              </TextLink>
             </div>
           </div>
 
@@ -80,7 +76,7 @@ export function BuildCategories() {
                     <div className="pt-2">
                       <span
                         aria-hidden="true"
-                        className="inline-flex size-9 items-center justify-center rounded-full border border-[#D9D5CB] text-[#14241B] transition-all group-hover:bg-[#14241B] group-hover:text-white group-hover:border-[#14241B]"
+                        className="inline-flex size-10 items-center justify-center rounded-full border border-[#D9D5CB] text-[#14241B] transition-colors group-hover:border-[#14241B] group-hover:bg-[#14241B] group-hover:text-[#FAF8F2]"
                       >
                         →
                       </span>

@@ -72,7 +72,7 @@ export function SiteHeader() {
           <Link
             href="/"
             aria-label="Bungalow in a Box home"
-            className="relative z-50 max-w-[190px] text-[0.76rem] font-bold uppercase tracking-[0.18em] md:max-w-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#98704C]"
+            className="relative z-50 max-w-[190px] text-[0.76rem] font-bold uppercase tracking-[0.18em] md:max-w-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#835A39]"
           >
             Bungalow in a Box
           </Link>
@@ -108,7 +108,7 @@ export function SiteHeader() {
 
             <Button
               href="/start-a-project"
-              variant={isSolid ? "primary" : "light"}
+              variant={isSolid ? "primary" : "inverse"}
               size="sm"
               arrow
             >
@@ -128,7 +128,7 @@ export function SiteHeader() {
               "lg:hidden",
               "focus-visible:outline-none",
               "focus-visible:ring-2",
-              "focus-visible:ring-[#98704C]",
+              "focus-visible:ring-[#835A39]",
             ].join(" ")}
           >
             {menuOpen ? <X size={25} /> : <Menu size={25} />}

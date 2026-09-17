@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
 import { articles } from "@/content/journal";
+import { TextLink } from "@/components/ui/text-link";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -172,13 +172,9 @@ export default async function ArticleDetailPage({ params }: PageProps) {
                     </p>
                   </div>
                   <div className="mt-6 pt-4 border-t border-[#F4F1E9]">
-                    <Link
-                      href={`/journal/${other.slug}`}
-                      className="text-xs font-bold uppercase tracking-wider text-[#98704C] inline-flex items-center gap-1"
-                    >
-                      <span>Read Story</span>
-                      <ArrowRight size={13} />
-                    </Link>
+                    <TextLink href={`/journal/${other.slug}`}>
+                      Read Story
+                    </TextLink>
                   </div>
                 </div>
               ))}

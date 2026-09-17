@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { faqItems } from "@/content/faq";
 import { cn } from "@/lib/utils";
+import { TextLink } from "@/components/ui/text-link";
 
 export function FAQPreview() {
   const [openId, setOpenId] = useState<string | null>(faqItems[0]?.id || null);
@@ -28,13 +28,9 @@ export function FAQPreview() {
             </p>
 
             <div className="mt-8">
-              <Link
-                href="/faq"
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#14241B] hover:text-[#98704C] transition-colors"
-              >
-                <span>Browse Complete FAQ Directory</span>
-                <ArrowRight size={14} />
-              </Link>
+              <TextLink href="/faq">
+                Browse Complete FAQ Directory
+              </TextLink>
             </div>
           </div>
 
@@ -47,7 +43,7 @@ export function FAQPreview() {
                     type="button"
                     onClick={() => toggle(item.id)}
                     aria-expanded={isOpen}
-                    className="w-full flex items-center justify-between text-left gap-4 group focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#14241B]"
+                    className="w-full flex items-center justify-between text-left gap-4 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#835A39] focus-visible:ring-offset-2"
                   >
                     <span className="font-[var(--font-display)] text-xl sm:text-2xl text-[#14241B] group-hover:text-[#98704C] transition-colors">
                       {item.question}

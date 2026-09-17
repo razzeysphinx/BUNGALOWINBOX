@@ -217,9 +217,10 @@ export function MultiStepIntake() {
                   <button
                     key={opt.value}
                     type="button"
+                    aria-pressed={selected}
                     onClick={() => updateField("projectType", opt.value)}
                     className={cn(
-                      "p-4 text-left border transition-all flex flex-col justify-between",
+                      "p-4 text-left border transition-all flex flex-col justify-between rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#835A39] focus-visible:ring-offset-2",
                       selected
                         ? "bg-[#14241B] text-white border-[#14241B]"
                         : "bg-[#FAF8F2] text-[#262724] border-[#D9D5CB] hover:border-[#14241B]"
@@ -359,12 +360,13 @@ export function MultiStepIntake() {
                   <button
                     key={opt}
                     type="button"
+                    aria-pressed={formData.timeline === opt}
                     onClick={() => updateField("timeline", opt)}
                     className={cn(
-                      "p-3 text-left border text-xs sm:text-sm transition-colors",
+                      "p-3 text-left border text-xs sm:text-sm transition-colors rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#835A39] focus-visible:ring-offset-2",
                       formData.timeline === opt
                         ? "bg-[#14241B] text-white border-[#14241B]"
-                        : "bg-[#FAF8F2] text-[#262724] border-[#D9D5CB]"
+                        : "bg-[#FAF8F2] text-[#262724] border-[#D9D5CB] hover:border-[#14241B]"
                     )}
                   >
                     {opt}

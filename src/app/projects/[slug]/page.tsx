@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import { projects } from "@/content/projects";
 import { Button } from "@/components/ui/button";
+import { TextLink } from "@/components/ui/text-link";
 import { ProjectGalleryModal } from "@/components/projects/project-gallery-modal";
 import { formatDimensions, formatSquareFeet } from "@/lib/utils";
 
@@ -230,14 +231,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               {project.pressUrl && (
                 <div className="pt-4 border-t border-[#D9D5CB]">
                   <span className="eyebrow text-xs block mb-2">Featured In Press</span>
-                  <a
+                  <TextLink
                     href={project.pressUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-bold uppercase tracking-wider text-[#98704C] hover:underline"
+                    external
+                    direction="upRight"
                   >
-                    Read Magazine Article →
-                  </a>
+                    Read Magazine Article
+                  </TextLink>
                 </div>
               )}
 

@@ -33,7 +33,7 @@ export function FinalCTA() {
           <div className="mt-10 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <Button
               href="/start-a-project"
-              variant="light"
+              variant="inverse"
               size="lg"
               arrow
               className="w-full sm:w-auto"
@@ -43,9 +43,9 @@ export function FinalCTA() {
 
             <Button
               href="/projects"
-              variant="ghost"
+              variant="inverseOutline"
               size="lg"
-              className="w-full border-white/45 text-white hover:bg-white hover:text-[#14241B] sm:w-auto"
+              className="w-full sm:w-auto"
             >
               Explore Projects
             </Button>

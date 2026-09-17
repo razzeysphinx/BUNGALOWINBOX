@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { testimonials } from "@/content/testimonials";
-import { ArrowRight, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
+import { TextLink } from "@/components/ui/text-link";
 
 export function ClientStories() {
   const verified = testimonials.filter((t) => t.verified);
@@ -19,13 +19,9 @@ export function ClientStories() {
             </h2>
           </div>
 
-          <Link
-            href="/client-stories"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#98704C] hover:underline"
-          >
-            <span>Read All Client Reflections</span>
-            <ArrowRight size={14} />
-          </Link>
+          <TextLink href="/client-stories">
+            Read All Client Reflections
+          </TextLink>
         </div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-3">

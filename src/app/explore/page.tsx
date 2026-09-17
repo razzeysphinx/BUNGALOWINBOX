@@ -125,10 +125,10 @@ export default function ExplorePage() {
               We frequently build one-of-a-kind structures: high-posted cape additions, airlock preschool entries, Asian-inspired tea houses, and heavy-timber pergolas with protective copper capping. If it can be framed with timbers, we can design and raise it.
             </p>
             <div className="pt-2 flex flex-col sm:flex-row gap-4">
-              <Button href="/start-a-project" variant="light" size="lg" arrow>
+              <Button href="/start-a-project" variant="inverse" size="lg" arrow>
                 Discuss a Custom Build
               </Button>
-              <Button href="/process" variant="ghost" size="lg" className="border-white/40 text-white hover:bg-white hover:text-[#14241B]">
+              <Button href="/process" variant="inverseOutline" size="lg">
                 How We Engineer & Build
               </Button>
             </div>

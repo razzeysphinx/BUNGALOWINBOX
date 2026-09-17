@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { projects } from "@/content/projects";
 import { formatDimensions, formatSquareFeet } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { TextLink } from "@/components/ui/text-link";
 
 export function FeaturedProjects() {
   const featured = projects.filter((p) => p.featured);
@@ -95,13 +96,9 @@ export function FeaturedProjects() {
                   </p>
 
                   <div className="mt-7">
-                    <Link
-                      href={`/projects/${project.slug}`}
-                      className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-[#14241B] hover:text-[#98704C] transition-colors group"
-                    >
-                      <span>Explore Case Study</span>
-                      <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-                    </Link>
+                    <TextLink href={`/projects/${project.slug}`}>
+                      Explore Case Study
+                    </TextLink>
                   </div>
                 </div>
               </article>
@@ -110,13 +107,14 @@ export function FeaturedProjects() {
         </div>
 
         <div className="pt-10 text-center">
-          <Link
+          <Button
             href="/projects"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#14241B] text-[#FAF8F2] font-bold text-xs uppercase tracking-[0.18em] hover:bg-[#24352B] transition-colors"
+            variant="primary"
+            size="lg"
+            arrow
           >
-            <span>View All 25 Completed Builds</span>
-            <ArrowRight size={16} />
-          </Link>
+            View All Completed Builds
+          </Button>
         </div>
       </div>
     </section>

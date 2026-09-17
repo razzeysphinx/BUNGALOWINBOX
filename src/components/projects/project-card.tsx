@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Project } from "@/types";
 import { formatDimensions, formatSquareFeet } from "@/lib/utils";
+import { TextLink } from "@/components/ui/text-link";
 
 interface ProjectCardProps {
   project: Project;
@@ -66,13 +66,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {project.squareFeet ? formatSquareFeet(project.squareFeet) : `${project.width}' Gable`}
           </span>
 
-          <Link
-            href={`/projects/${project.slug}`}
-            className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#14241B] group-hover:text-[#98704C] transition-colors"
-          >
-            <span>View Project</span>
-            <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
-          </Link>
+          <TextLink href={`/projects/${project.slug}`}>
+            View Project
+          </TextLink>
         </div>
       </div>
     </article>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { UtilityButton } from "@/components/ui/utility-button";
 
 const steps = [
   {
@@ -128,7 +129,7 @@ export function ShopToSite() {
                   type="button"
                   onClick={() => setActiveStep(idx)}
                   className={[
-                    "text-left p-3.5 border transition-all rounded-[4px] flex items-baseline gap-3.5",
+                    "text-left p-3.5 border transition-all rounded-[4px] flex items-baseline gap-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#835A39] focus-visible:ring-offset-2",
                     isSelected
                       ? "bg-[#14241B] text-[#FAF8F2] border-[#14241B] shadow-sm"
                       : "bg-white text-[#262724] border-[#D9D5CB] hover:border-[#14241B]",
@@ -189,22 +190,19 @@ export function ShopToSite() {
                 </div>
 
                 <div className="flex gap-2">
-                  <button
-                    type="button"
+                  <UtilityButton
                     disabled={activeStep === 0}
                     onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
-                    className="px-3 py-1.5 text-xs font-semibold border border-[#D9D5CB] rounded-[4px] disabled:opacity-30 disabled:pointer-events-none hover:bg-[#F4F1E9]"
                   >
                     ← Previous Stage
-                  </button>
-                  <button
-                    type="button"
+                  </UtilityButton>
+                  <UtilityButton
+                    variant="strong"
                     disabled={activeStep === steps.length - 1}
                     onClick={() => setActiveStep((prev) => Math.min(steps.length - 1, prev + 1))}
-                    className="px-3 py-1.5 text-xs font-semibold bg-[#14241B] text-white rounded-[4px] disabled:opacity-30 disabled:pointer-events-none hover:bg-[#24352B]"
                   >
                     Next Stage →
-                  </button>
+                  </UtilityButton>
                 </div>
               </div>
             </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { X, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
+import { IconButton } from "@/components/ui/icon-button";
 
 interface GalleryModalProps {
   images: { src: string; caption?: string; title?: string }[];
@@ -34,7 +35,7 @@ export function ProjectGalleryModal({ images, title = "Project Gallery" }: Galle
             key={img.src + idx}
             type="button"
             onClick={() => openLightbox(idx)}
-            className="group relative aspect-[4/3] bg-[#FAF8F2] border border-[#D9D5CB] overflow-hidden text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#14241B]"
+            className="group relative aspect-[4/3] bg-[#FAF8F2] border border-[#D9D5CB] overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#835A39] focus-visible:ring-offset-2"
           >
             <Image
               src={img.src}
@@ -69,14 +70,13 @@ export function ProjectGalleryModal({ images, title = "Project Gallery" }: Galle
             <span className="font-[var(--font-display)] text-xl sm:text-2xl">
               {title} • Image {activeIdx + 1} of {images.length}
             </span>
-            <button
-              type="button"
+            <IconButton
+              variant="overlay"
+              label="Close fullscreen view"
               onClick={closeLightbox}
-              aria-label="Close fullscreen view"
-              className="p-2 text-white/80 hover:text-white transition-colors"
             >
-              <X size={28} />
-            </button>
+              <X size={22} />
+            </IconButton>
           </div>
 
           {/* Center Image */}
@@ -93,23 +93,23 @@ export function ProjectGalleryModal({ images, title = "Project Gallery" }: Galle
             </div>
 
             {/* Navigation buttons */}
-            <button
-              type="button"
+            <IconButton
+              variant="overlay"
+              label="Previous image"
               onClick={prev}
-              aria-label="Previous image"
-              className="absolute left-2 sm:left-4 p-3 bg-white/10 hover:bg-white/25 text-white rounded-full transition-colors"
+              className="absolute left-2 sm:left-4"
             >
-              <ChevronLeft size={24} />
-            </button>
+              <ChevronLeft size={22} />
+            </IconButton>
 
-            <button
-              type="button"
+            <IconButton
+              variant="overlay"
+              label="Next image"
               onClick={next}
-              aria-label="Next image"
-              className="absolute right-2 sm:right-4 p-3 bg-white/10 hover:bg-white/25 text-white rounded-full transition-colors"
+              className="absolute right-2 sm:right-4"
             >
-              <ChevronRight size={24} />
-            </button>
+              <ChevronRight size={22} />
+            </IconButton>
           </div>
 
           {/* Bottom Caption */}
