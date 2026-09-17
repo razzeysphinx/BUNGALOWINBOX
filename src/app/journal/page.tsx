@@ -14,7 +14,7 @@ export default function JournalPage() {
   return (
     <div className="bg-[#FAF8F2] pb-24">
       {/* Hero */}
-      <section className="py-16 md:py-24 border-b border-[#D9D5CB] bg-[#F4F1E9]">
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24 border-b border-[#D9D5CB] bg-[#F4F1E9]">
         <div className="container max-w-[960px]">
           <p className="eyebrow">The Unboxing Journal</p>
           <h1 className="display-lg text-[#14241B]">

@@ -31,7 +31,7 @@ export default function FAQPage() {
       />
 
       {/* Hero */}
-      <section className="py-16 md:py-24 border-b border-[#D9D5CB] bg-[#F4F1E9]">
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24 border-b border-[#D9D5CB] bg-[#F4F1E9]">
         <div className="container max-w-[960px]">
           <p className="eyebrow">Knowledge Base & FAQ</p>
           <h1 className="display-lg text-[#14241B]">
@@ -64,10 +64,10 @@ export default function FAQPage() {
             We are glad to discuss site slopes, ledge conditions, municipal setbacks, and customized floor plans directly with you.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-            <Button href="/start-a-project" variant="dark">
+            <Button href="/start-a-project" variant="primary" size="lg" arrow>
               Ask Raoul & Vicki Directly
             </Button>
-            <Button href="/process" variant="outline">
+            <Button href="/process" variant="secondary" size="lg">
               Review Our Process
             </Button>
           </div>

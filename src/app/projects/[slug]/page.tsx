@@ -69,7 +69,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   return (
     <article className="bg-[#FAF8F2] pb-24">
       {/* Breadcrumb Bar */}
-      <div className="border-b border-[#D9D5CB] bg-[#F4F1E9] py-3 text-xs">
+      <div className="border-b border-[#D9D5CB] bg-[#F4F1E9] pt-24 md:pt-28 pb-3 text-xs">
         <div className="container flex items-center gap-2 text-[#6D716A]">
           <Link href="/" className="hover:text-[#14241B] transition-colors">
             Home
@@ -244,7 +244,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <div className="pt-6 border-t border-[#D9D5CB]">
                 <Button
                   href={`/start-a-project?footprint=${project.width}x${project.length}&type=${project.category}`}
-                  variant="dark"
+                  variant="primary"
+                  size="md"
+                  arrow
                   className="w-full text-center"
                 >
                   Inquire About This Model
@@ -396,11 +398,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
             <Button
               href={`/start-a-project?footprint=${project.width}x${project.length}&type=${project.category}`}
-              variant="dark"
+              variant="primary"
+              size="lg"
+              arrow
             >
               Start Your Project Inquiry
             </Button>
-            <Button href="/projects" variant="outline">
+            <Button href="/projects" variant="secondary" size="lg">
               Back to Project Archive
             </Button>
           </div>

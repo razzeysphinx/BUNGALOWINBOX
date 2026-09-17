@@ -18,7 +18,7 @@ export function FeaturedCaseStudy() {
             </div>
 
             <div className="flex items-center gap-4">
-              <Button href="/projects/casco-bay-barn-house" variant="dark">
+              <Button href="/projects/casco-bay-barn-house" variant="primary" size="md" arrow>
                 View Full Case Study
               </Button>
             </div>

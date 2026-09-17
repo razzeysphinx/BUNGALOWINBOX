@@ -44,7 +44,7 @@ export default function PricingPage() {
   return (
     <div className="bg-[#FAF8F2] pb-24">
       {/* Hero */}
-      <section className="py-16 md:py-24 border-b border-[#D9D5CB] bg-[#F4F1E9]">
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24 border-b border-[#D9D5CB] bg-[#F4F1E9]">
         <div className="container max-w-[960px]">
           <p className="eyebrow">Investment & Budget Guide</p>
           <h1 className="display-lg text-[#14241B]">
@@ -59,12 +59,12 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Why Custom Estimates */}
+      {/* Philosophy */}
       <section className="py-16 lg:py-20 border-b border-[#D9D5CB]">
         <div className="container max-w-[960px]">
-          <div className="bg-white border border-[#D9D5CB] p-8 sm:p-12 space-y-6">
-            <h2 className="font-[var(--font-display)] text-3xl sm:text-4xl text-[#14241B]">
-              Why We Provide Individual Project Estimates
+          <div className="space-y-6">
+            <h2 className="heading-xl text-[#14241B]">
+              Why there is no single catalog price.
             </h2>
             <p className="text-base sm:text-lg text-[#6D716A] leading-relaxed">
               Every Bungalow in a Box is an authentic piece of timber architecture, not an off-the-shelf prefabricated modular box. A 24&apos; x 36&apos; frame configured as an open high-ceiling event barn requires very different timber bent spacing and joinery than a 24&apos; x 36&apos; three-bedroom residence with a daylight basement and wrap-around porch.
@@ -77,7 +77,7 @@ export default function PricingPage() {
               <span className="text-xs font-mono uppercase tracking-wider text-[#98704C]">
                 Introductory Consultations Are Always Free
               </span>
-              <Button href="/start-a-project" variant="dark">
+              <Button href="/start-a-project" variant="primary" size="md" arrow>
                 Request a Custom Estimate
               </Button>
             </div>
@@ -183,10 +183,10 @@ export default function PricingPage() {
             Tell us your desired footprint, site location, and timeline. Raoul and Vicki will review your details and connect directly.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-            <Button href="/start-a-project" variant="dark">
+            <Button href="/start-a-project" variant="primary" size="lg" arrow>
               Request Your Estimate
             </Button>
-            <Button href="/projects" variant="outline">
+            <Button href="/projects" variant="secondary" size="lg">
               Explore 25 Completed Builds
             </Button>
           </div>

@@ -44,7 +44,7 @@ export default async function ArticleDetailPage({ params }: PageProps) {
   return (
     <article className="bg-[#FAF8F2] pb-24">
       {/* Breadcrumb Bar */}
-      <div className="border-b border-[#D9D5CB] bg-[#F4F1E9] py-3 text-xs">
+      <div className="border-b border-[#D9D5CB] bg-[#F4F1E9] pt-24 md:pt-28 pb-3 text-xs">
         <div className="container flex items-center gap-2 text-[#6D716A]">
           <Link href="/" className="hover:text-[#14241B] transition-colors">
             Home

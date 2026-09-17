@@ -1,24 +1,24 @@
 const items = [
   {
-    label: "Company Founded",
+    label: "ESTABLISHED",
     value: "1998",
-    detail: "Montsweag Brook Corp."
+    detail: "Montsweag Brook Corp.",
   },
   {
-    label: "Bungalow in a Box",
-    value: "Since 2007",
-    detail: "Precision building system"
+    label: "BUNGALOW IN A BOX",
+    value: "SINCE 2007",
+    detail: "Precision structural system",
   },
   {
-    label: "Craft Mastery",
-    value: "40+ Years",
-    detail: "Traditional timber joinery"
+    label: "TRADITIONAL",
+    value: "TIMBER FRAME",
+    detail: "Mortise & tenon joinery",
   },
   {
-    label: "Fabricated in Maine",
-    value: "Woolwich, ME",
-    detail: "Delivered throughout New England"
-  }
+    label: "DESIGNED & FABRICATED",
+    value: "IN MAINE",
+    detail: "Woolwich workshop",
+  },
 ];
 
 export function TrustStrip() {
@@ -33,11 +33,11 @@ export function TrustStrip() {
               index !== 0 ? "border-l border-[#D9D5CB]" : "",
             ].join(" ")}
           >
-            <div className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-[#6D716A]">
+            <div className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-[#98704C]">
               {item.label}
             </div>
 
-            <div className="mt-2 font-[var(--font-display)] text-2xl sm:text-3xl lg:text-4xl text-[#14241B]">
+            <div className="mt-2 font-[var(--font-display)] text-2xl sm:text-3xl lg:text-4xl font-medium text-[#14241B]">
               {item.value}
             </div>
 

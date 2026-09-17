@@ -16,36 +16,49 @@ export function FinalCTA() {
       </div>
 
       <div className="container relative z-10 flex min-h-[620px] md:min-h-[720px] items-center py-20">
-        <div className="max-w-[840px]">
-          <p className="eyebrow text-[#B18A63]">Begin a Conversation</p>
+        <div className="max-w-[880px]">
+          <p className="eyebrow text-[#B18A63]">Start Your Journey</p>
 
-          <h2 className="font-[var(--font-display)] text-[clamp(3.5rem,6.5vw,7.2rem)] leading-[0.9] tracking-[-0.045em] text-[#FAF8F2]">
-            Have a place
+          <h2 className="display-lg max-w-[880px] text-[#FAF8F2]">
+            Have a place in mind?
             <span className="block italic font-normal text-white">
-              in mind? Let&apos;s build for it.
+              Let&apos;s design what belongs there.
             </span>
           </h2>
 
-          <p className="mt-8 max-w-[620px] text-base md:text-lg text-white/80 leading-relaxed">
-            Whether you envision a remote woodland cabin, an island cape, a spacious backyard ADU, or an open event barn, we are ready to listen, collaborate, and craft an enduring timber frame for your site.
+          <p className="mt-8 max-w-[640px] text-base md:text-lg text-white/80 leading-relaxed">
+            Whether you envision a remote woodland retreat, an island cape, a spacious backyard guest house, or an open timber barn, we are ready to listen, collaborate, and craft an enduring structural system for your land.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row gap-4">
-            <Button href="/start-a-project" variant="light">
+          <div className="mt-10 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <Button
+              href="/start-a-project"
+              variant="light"
+              size="lg"
+              arrow
+              className="w-full sm:w-auto"
+            >
               Start Your Project
             </Button>
 
             <Button
               href="/projects"
-              variant="outline"
-              className="border-white/40 text-white hover:bg-white hover:text-[#14241B]"
+              variant="ghost"
+              size="lg"
+              className="w-full border-white/45 text-white hover:bg-white hover:text-[#14241B] sm:w-auto"
             >
-              Explore All Projects
+              Explore Projects
             </Button>
           </div>
 
           <div className="mt-12 pt-6 border-t border-white/15 text-xs text-white/60">
-            Montsweag Brook Corporation • Woolwich, Maine • Call <a href="tel:+1-207-522-4590" className="text-[#B18A63] font-semibold hover:underline">(207) 522-4590</a>
+            Montsweag Brook Corporation • Woolwich, Maine • Call{" "}
+            <a
+              href="tel:+1-207-522-4590"
+              className="text-[#B18A63] font-semibold hover:underline"
+            >
+              (207) 522-4590
+            </a>
           </div>
         </div>
       </div>

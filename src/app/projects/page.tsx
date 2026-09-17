@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="bg-[#FAF8F2] py-12 md:py-20">
+    <div className="bg-[#FAF8F2] pt-28 pb-20 md:pt-36 md:pb-24">
       <div className="container">
         {/* Header editorial */}
         <div className="max-w-[840px] pb-12">

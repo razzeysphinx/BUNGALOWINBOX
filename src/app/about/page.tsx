@@ -46,7 +46,7 @@ export default function AboutPage() {
   return (
     <div className="bg-[#FAF8F2] pb-24">
       {/* Hero */}
-      <section className="py-16 md:py-24 border-b border-[#D9D5CB] bg-[#F4F1E9]">
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24 border-b border-[#D9D5CB] bg-[#F4F1E9]">
         <div className="container max-w-[960px]">
           <p className="eyebrow">Our Story & Heritage</p>
           <h1 className="display-lg text-[#14241B]">
@@ -295,10 +295,10 @@ export default function AboutPage() {
             We are available Monday through Friday and on weekends for in-person or phone consultations.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-            <Button href="/start-a-project" variant="dark">
+            <Button href="/start-a-project" variant="primary" size="lg" arrow>
               Start Your Project
             </Button>
-            <Button href="/projects" variant="outline">
+            <Button href="/projects" variant="secondary" size="lg">
               Explore Our Projects
             </Button>
           </div>

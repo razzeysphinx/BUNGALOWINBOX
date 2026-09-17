@@ -2,95 +2,115 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
-const mainNavLinks = [
-  { href: "/projects", label: "Projects" },
-  { href: "/process", label: "How It Works" },
-  { href: "/about", label: "Why Bungalow" },
-  { href: "/pricing", label: "Pricing & Budget" },
-  { href: "/journal", label: "Journal" },
-  { href: "/faq", label: "FAQ" }
+const navItems = [
+  {
+    label: "Explore",
+    href: "/explore",
+  },
+  {
+    label: "Projects",
+    href: "/projects",
+  },
+  {
+    label: "How It Works",
+    href: "/process",
+  },
+  {
+    label: "Why Bungalow",
+    href: "/about",
+  },
+  {
+    label: "Resources",
+    href: "/resources",
+  },
 ];
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 30);
     };
+
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open]);
+  }, [menuOpen]);
+
+  const isSolid = scrolled || menuOpen || !isHome;
 
   return (
     <>
       <header
-        className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-          scrolled
-            ? "bg-[#14241B]/95 text-white backdrop-blur-md py-3 shadow-md border-b border-white/10"
-            : "bg-[#14241B] text-white py-5 border-b border-white/10"
-        )}
+        className={[
+          "fixed inset-x-0 top-0 z-50",
+          "transition-all duration-300",
+          isSolid
+            ? "border-b border-black/8 bg-[#FAF8F2]/95 text-[#14241B] shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-xl"
+            : "bg-transparent text-white",
+        ].join(" ")}
       >
-        <div className="container flex items-center justify-between">
+        <div className="container flex h-[78px] items-center justify-between">
           <Link
             href="/"
-            className="group flex flex-col focus-visible:outline-white"
+            aria-label="Bungalow in a Box home"
+            className="relative z-50 max-w-[190px] text-[0.76rem] font-bold uppercase tracking-[0.18em] md:max-w-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#98704C]"
           >
-            <span className="text-[0.82rem] font-bold uppercase tracking-[0.2em] text-[#FAF8F2] group-hover:text-white transition-colors">
-              Bungalow in a Box
-            </span>
-            <span className="text-[0.62rem] uppercase tracking-[0.22em] text-[#B18A63]">
-              Woolwich, Maine • Est. 1998
-            </span>
+            Bungalow in a Box
           </Link>
 
           <nav
             aria-label="Primary navigation"
-            className="hidden items-center gap-7 lg:flex"
+            className="hidden items-center gap-8 lg:flex"
           >
-            {mainNavLinks.map((link) => {
-              const active = pathname === link.href;
+            {navItems.map((item) => {
+              const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
               return (
                 <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "text-xs font-semibold uppercase tracking-[0.14em] transition-colors hover:text-white py-1 relative",
-                    active ? "text-white" : "text-white/70"
-                  )}
+                  key={item.href}
+                  href={item.href}
+                  className={[
+                    "relative py-2 text-[0.84rem] font-medium transition-colors",
+                    active
+                      ? isSolid
+                        ? "text-[#14241B] font-semibold"
+                        : "text-white font-semibold"
+                      : isSolid
+                      ? "text-[#14241B]/80 hover:text-[#14241B]"
+                      : "text-white/80 hover:text-white",
+                    "after:absolute after:bottom-0 after:left-0 after:h-px after:bg-current",
+                    "after:transition-all after:duration-300",
+                    active ? "after:w-full" : "after:w-0 hover:after:w-full",
+                  ].join(" ")}
                 >
-                  {link.label}
-                  {active && (
-                    <span className="absolute bottom-0 inset-x-0 h-[1.5px] bg-[#98704C]" />
-                  )}
+                  {item.label}
                 </Link>
               );
             })}
 
             <Button
               href="/start-a-project"
-              variant="light"
-              className="ml-2 !min-h-[42px] !px-5"
+              variant={isSolid ? "primary" : "light"}
+              size="sm"
+              arrow
             >
               Start Your Project
             </Button>
@@ -98,67 +118,88 @@ export function SiteHeader() {
 
           <button
             type="button"
-            aria-label={open ? "Close navigation" : "Open navigation"}
-            aria-expanded={open}
-            className="flex size-11 items-center justify-center text-white lg:hidden focus-visible:outline-white"
-            onClick={() => setOpen((val) => !val)}
+            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen((current) => !current)}
+            className={[
+              "relative z-50 flex size-11",
+              "items-center justify-center",
+              "lg:hidden",
+              "focus-visible:outline-none",
+              "focus-visible:ring-2",
+              "focus-visible:ring-[#98704C]",
+            ].join(" ")}
           >
-            {open ? <X size={26} /> : <Menu size={26} />}
+            {menuOpen ? <X size={25} /> : <Menu size={25} />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Drawer Overlay */}
-      {open && (
-        <div className="fixed inset-0 z-40 flex flex-col bg-[#14241B] text-white pt-24 px-6 pb-8 lg:hidden overflow-y-auto">
-          <div className="flex flex-col border-b border-white/10 pb-6 mb-6">
-            <span className="eyebrow text-[#B18A63] text-xs">Navigation</span>
-            <nav className="flex flex-col divide-y divide-white/10">
+      <div
+        id="mobile-navigation"
+        className={[
+          "fixed inset-0 z-40",
+          "bg-[#FAF8F2]",
+          "text-[#14241B]",
+          "transition-all duration-500",
+          "lg:hidden",
+          menuOpen
+            ? "visible translate-y-0 opacity-100"
+            : "invisible -translate-y-4 opacity-0 pointer-events-none",
+        ].join(" ")}
+      >
+        <div className="container flex min-h-dvh flex-col pb-8 pt-28">
+          <nav
+            aria-label="Mobile navigation"
+            className="border-t border-[#D9D5CB]"
+          >
+            {navItems.map((item, index) => (
               <Link
-                href="/"
-                onClick={() => setOpen(false)}
-                className="py-4 font-[var(--font-display)] text-2xl text-white hover:text-[#B18A63] transition-colors"
+                key={item.href}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className={[
+                  "group flex items-center",
+                  "justify-between",
+                  "border-b border-[#D9D5CB]",
+                  "py-5",
+                ].join(" ")}
               >
-                Home
-              </Link>
-              {mainNavLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="py-4 font-[var(--font-display)] text-2xl text-white hover:text-[#B18A63] transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Link
-                href="/client-stories"
-                onClick={() => setOpen(false)}
-                className="py-4 font-[var(--font-display)] text-2xl text-white hover:text-[#B18A63] transition-colors"
-              >
-                Client Stories
-              </Link>
-            </nav>
-          </div>
+                <span className="flex items-baseline gap-5">
+                  <span className="text-[0.68rem] font-bold tracking-[0.16em] text-[#98704C]">
+                    0{index + 1}
+                  </span>
 
-          <div className="mt-auto pt-4 flex flex-col gap-4">
-            <Button
-              href="/start-a-project"
-              variant="light"
-              className="w-full text-center"
-            >
-              Start Your Project
-            </Button>
+                  <span className="font-[var(--font-display)] text-[2rem] leading-none">
+                    {item.label}
+                  </span>
+                </span>
 
-            <div className="text-center text-xs text-white/60 space-y-1">
-              <div>Montsweag Brook Corporation • Woolwich, ME</div>
-              <a href="tel:+1-207-522-4590" className="text-[#B18A63] block font-semibold">
-                (207) 522-4590
-              </a>
-            </div>
+                <ArrowUpRight
+                  size={20}
+                  strokeWidth={1.6}
+                  className="opacity-45 transition group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </Link>
+            ))}
+          </nav>
+
+          <Button
+            href="/start-a-project"
+            size="lg"
+            arrow
+            className="mt-8 w-full"
+            onClick={() => setMenuOpen(false)}
+          >
+            Start Your Project
+          </Button>
+
+          <div className="mt-auto pt-12 text-sm leading-6 text-[#6D716A]">
+            Custom timber-frame structures designed and fabricated in Woolwich, Maine.
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

@@ -1,10 +1,16 @@
 import { Hero } from "@/components/home/hero";
 import { TrustStrip } from "@/components/home/trust-strip";
+import { ThreeStages } from "@/components/home/three-stages";
 import { BuildCategories } from "@/components/home/build-categories";
 import { FeaturedProjects } from "@/components/home/featured-projects";
+import { FindYourBungalow } from "@/components/home/find-your-bungalow";
 import { BungalowDifference } from "@/components/home/bungalow-difference";
+import { ShopToSite } from "@/components/home/shop-to-site";
 import { FeaturedCaseStudy } from "@/components/home/featured-case-study";
+import { ClientInvolvement } from "@/components/home/client-involvement";
+import { FamilyWorkshop } from "@/components/home/family-workshop";
 import { ProcessPreview } from "@/components/home/process-preview";
+import { PricingBudget } from "@/components/home/pricing-budget";
 import { PressStrip } from "@/components/home/press-strip";
 import { ClientStories } from "@/components/home/client-stories";
 import { FAQPreview } from "@/components/home/faq-preview";
@@ -13,44 +19,55 @@ import { FinalCTA } from "@/components/home/final-cta";
 export default function HomePage() {
   return (
     <>
+      {/* 01 Hero */}
       <Hero />
+
+      {/* 02 Trust Strip */}
       <TrustStrip />
 
-      {/* Large Architectural Manifesto / Introduction */}
-      <section className="section bg-[#FAF8F2]">
-        <div className="container grid gap-10 lg:grid-cols-12 items-start">
-          <div className="lg:col-span-4">
-            <p className="eyebrow">Built Differently</p>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#6D716A]">
-              Maine Craft • Modern Performance
-            </span>
-          </div>
+      {/* 03 What Bungalow Actually Does (Three Stages) */}
+      <ThreeStages />
 
-          <div className="lg:col-span-8">
-            <h2 className="font-[var(--font-display)] text-[clamp(2.5rem,4.8vw,5.2rem)] leading-[1.02] tracking-[-0.035em] text-[#14241B]">
-              We don&apos;t mass-produce houses. We craft enduring structures tailored to the site and the people who live in them.
-            </h2>
-
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 text-[#6D716A] text-base leading-relaxed">
-              <p>
-                First, we listen. Then we design and prefabricate authentic timber-frame structures in our Woolwich workshop. Combining traditional mortise-and-tenon joinery with high-performance Structural Insulated Panels (SIPs), we eliminate the drafts and energy waste of standard stick-built construction.
-              </p>
-              <p>
-                Whether it is a 2,000 sq. ft. coastal barn house, a 280 sq. ft. mountain studio, or an open timber-frame event space, each Bungalow in a Box arrives on site pre-cut, pre-stained, and ready to be raised swiftly with our dedicated crane fleet.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* 04 What Are You Building? (Visual Categories) */}
       <BuildCategories />
+
+      {/* 05 Featured Projects (Editorial Layouts) */}
       <FeaturedProjects />
+
+      {/* 06 Find Your Bungalow (Interactive Guided Project Discovery) */}
+      <FindYourBungalow />
+
+      {/* 07 Bungalow Building System (Timber Frame + Panels + Envelope) */}
       <BungalowDifference />
+
+      {/* 08 Shop to Site (10-Step Construction Documentary Timeline) */}
+      <ShopToSite />
+
+      {/* 09 Featured Case Study (Casco Bay Barn House Deep Dive) */}
       <FeaturedCaseStudy />
-      <ProcessPreview />
+
+      {/* 10 Client Involvement (The Raising Experience) */}
+      <ClientInvolvement />
+
+      {/* 11 Family + Workshop (Hennin Family Heritage) */}
+      <FamilyWorkshop />
+
+      {/* Press Proof Strip */}
       <PressStrip />
+
+      {/* 12 Process (7-Stage Journey) */}
+      <ProcessPreview />
+
+      {/* 13 Pricing / Budget (Cost Factors & Deposit Structure) */}
+      <PricingBudget />
+
+      {/* 14 Verified Client Stories (Verified Accounts Only) */}
       <ClientStories />
+
+      {/* 15 FAQ (Key Homeowner Questions) */}
       <FAQPreview />
+
+      {/* 16 Final CTA (Closing Action) */}
       <FinalCTA />
     </>
   );

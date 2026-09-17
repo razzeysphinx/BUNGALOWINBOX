@@ -101,7 +101,7 @@ export default function ProcessPage() {
   return (
     <div className="bg-[#FAF8F2] pb-24">
       {/* Hero */}
-      <section className="py-16 md:py-24 border-b border-[#D9D5CB] bg-[#F4F1E9]">
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24 border-b border-[#D9D5CB] bg-[#F4F1E9]">
         <div className="container max-w-[960px]">
           <p className="eyebrow">The Building Sequence</p>
           <h1 className="display-lg text-[#14241B]">
@@ -251,10 +251,10 @@ export default function ProcessPage() {
             Let&apos;s discuss your building site, footprint possibilities, and how our $3,000 design deposit gets your project onto our shop calendar.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-            <Button href="/start-a-project" variant="dark">
+            <Button href="/start-a-project" variant="primary" size="lg" arrow>
               Start Your Project Inquiry
             </Button>
-            <Button href="/pricing" variant="outline">
+            <Button href="/pricing" variant="secondary" size="lg">
               Learn About Project Budgets
             </Button>
           </div>

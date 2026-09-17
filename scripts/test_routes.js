@@ -1,6 +1,11 @@
 async function testEndpoints() {
   const routes = [
-    { path: '/', expectedStatus: 200, matchText: 'Authentic Timber Frames' },
+    { path: '/', expectedStatus: 200, matchText: 'Designed Around' },
+    { path: '/explore', expectedStatus: 200, matchText: 'Architectural Typologies' },
+    { path: '/explore/homes', expectedStatus: 200, matchText: 'Homes' },
+    { path: '/explore/cottages-cabins', expectedStatus: 200, matchText: 'Cottages' },
+    { path: '/explore/adus', expectedStatus: 200, matchText: 'ADUs' },
+    { path: '/resources', expectedStatus: 200, matchText: 'Planning resources' },
     { path: '/projects', expectedStatus: 200, matchText: 'Casco Bay Barn House' },
     { path: '/projects/casco-bay-barn-house', expectedStatus: 200, matchText: 'Chebeague Island, Maine' },
     { path: '/about', expectedStatus: 200, matchText: 'Montsweag Brook Corporation' },
@@ -49,6 +54,9 @@ async function testEndpoints() {
   }
 
   console.log(`\nVerification finished: ${passCount}/${routes.length} tests passed.`);
+  if (passCount !== routes.length) {
+    process.exit(1);
+  }
 }
 
 testEndpoints();

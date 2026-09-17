@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Check, ArrowRight, ArrowLeft, Send } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -161,7 +161,7 @@ export function MultiStepIntake() {
         </div>
 
         <div className="mt-8 pt-4">
-          <Button href="/projects" variant="dark">
+          <Button href="/projects" variant="primary" size="lg" arrow>
             Continue Exploring Our Work
           </Button>
         </div>
@@ -483,29 +483,33 @@ export function MultiStepIntake() {
         )}
 
         {/* Step Navigation Buttons */}
-        <div className="mt-10 pt-6 border-t border-[#D9D5CB] flex items-center justify-between">
-          {step > 1 ? (
-            <button
-              type="button"
-              onClick={prevStep}
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#6D716A] hover:text-[#14241B] transition-colors"
-            >
-              <ArrowLeft size={14} />
-              <span>Previous</span>
-            </button>
-          ) : (
-            <div />
-          )}
+        <div className="mt-10 pt-6 border-t border-[#D9D5CB] flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
+          <Button
+            type="button"
+            variant="secondary"
+            size="lg"
+            onClick={prevStep}
+            disabled={step === 1}
+          >
+            Back
+          </Button>
 
           {step < 5 ? (
-            <Button type="button" onClick={nextStep} variant="dark">
-              <span>Continue</span>
-              <ArrowRight size={14} className="ml-2" />
+            <Button
+              type="button"
+              size="lg"
+              arrow
+              onClick={nextStep}
+            >
+              Continue
             </Button>
           ) : (
-            <Button type="submit" variant="timber">
-              <span>Send Project Inquiry</span>
-              <Send size={14} className="ml-2" />
+            <Button
+              type="submit"
+              size="lg"
+              arrow
+            >
+              Request My Consultation
             </Button>
           )}
         </div>

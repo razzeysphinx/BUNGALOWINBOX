@@ -82,7 +82,7 @@ export default function RootLayout({
       </head>
       <body className={`${display.variable} ${sans.variable} antialiased selection:bg-[#14241B] selection:text-[#FAF8F2]`}>
         <SiteHeader />
-        <main className="min-h-screen pt-[72px] lg:pt-[76px]">{children}</main>
+        <main className="min-h-screen">{children}</main>
         <SiteFooter />
       </body>
     </html>
